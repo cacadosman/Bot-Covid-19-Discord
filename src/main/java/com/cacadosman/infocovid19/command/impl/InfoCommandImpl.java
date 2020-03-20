@@ -20,7 +20,7 @@ public class InfoCommandImpl implements InfoCommand {
     @Override
     public void execute(MessageReceivedEvent event) {
         String message = event.getMessage().getContentRaw();
-        if (MessageHelper.getParamCount(message) != 3) {
+        if (MessageHelper.getParamCount(message) < 3) {
             return;
         }
 
@@ -47,10 +47,11 @@ public class InfoCommandImpl implements InfoCommand {
     }
 
     private CovidCountryResult getCountryData(MessageReceivedEvent event) {
-        String country = MessageHelper.getParam(event.getMessage().getContentRaw(), 2);
+        String country = MessageHelper.sliceParamUntilEnd(event.getMessage().getContentRaw(), 2);
         List<CovidAll> data = covidService.getAll();
         for(CovidAll item : data) {
             String itemCountry = item.getAttributes().getCountry_Region().toLowerCase();
+
             if (itemCountry.equals(country)) {
                 CovidCountryResult result = CovidCountryResult
                         .builder()
@@ -66,7 +67,7 @@ public class InfoCommandImpl implements InfoCommand {
     }
 
     private void sendCountryData(MessageReceivedEvent event) {
-        String country = MessageHelper.getParam(event.getMessage().getContentRaw(), 2);
+        String country = MessageHelper.sliceParamUntilEnd(event.getMessage().getContentRaw(), 2);
         CovidCountryResult result = getCountryData(event);
         if (result == null) {
             String messages = "Nama negara tidak ditemukan.";

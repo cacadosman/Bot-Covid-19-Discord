@@ -25,12 +25,13 @@ public class DiscordEventListener extends ListenerAdapter {
 
     @Override
     public void onMessageReceived(MessageReceivedEvent event) {
-        logger.info("DiscordEventListener.onMessageReceived: " + event.getMessage().getContentRaw());
+        logger.info("onMessageReceived");
         messageReceiverCommand.execute(event);
     }
 
     @Override
     public void onGuildJoin(@Nonnull GuildJoinEvent event) {
+        logger.info("onGuildJoin");
         guildJoinCommand.execute(event);
     }
 }
