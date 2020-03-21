@@ -17,9 +17,10 @@ public class GuildJoinCommandImpl implements GuildJoinCommand {
         messages += "Teman-teman dapat menginputkan perintah berikut:\n";
         messages += "- /covid info global (untuk mengetahui statistik global)\n";
         messages += "- /covid info <negara> (untuk mengetahui statistik di negara tertentu)\n";
-        messages += "/covid subscribe (untuk melakukan subscription agar mendapat " +
+        messages += "- /covid subscribe (untuk melakukan subscription agar mendapat " +
                     "push notification pada channel discord saat ada perubahan data)\n";
-        messages += "/covid unsubscribe (untuk membatalkan subscription)\n";
+        messages += "- /covid unsubscribe (untuk membatalkan subscription)\n";
+        messages += "- /covid help (untuk melihat daftar perintah)\n";
         messages += "Contoh: /covid info indonesia\n\n";
         messages += "Kontak:\n";
         messages += "- FB: cacadosman23\n";

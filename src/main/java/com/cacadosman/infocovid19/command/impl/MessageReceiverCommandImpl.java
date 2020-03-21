@@ -1,10 +1,7 @@
 package com.cacadosman.infocovid19.command.impl;
 
-import com.cacadosman.infocovid19.command.InfoCommand;
-import com.cacadosman.infocovid19.command.SubscribeCommand;
-import com.cacadosman.infocovid19.command.UnsubscribeCommand;
+import com.cacadosman.infocovid19.command.*;
 import com.cacadosman.infocovid19.helper.MessageHelper;
-import com.cacadosman.infocovid19.command.MessageReceiverCommand;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,6 +15,8 @@ public class MessageReceiverCommandImpl implements MessageReceiverCommand {
     SubscribeCommand subscribeCommand;
     @Autowired
     UnsubscribeCommand unsubscribeCommand;
+    @Autowired
+    HelpCommand helpCommand;
 
     @Override
     public void execute(MessageReceivedEvent event) {
@@ -39,6 +38,8 @@ public class MessageReceiverCommandImpl implements MessageReceiverCommand {
             case "unsubscribe":
                 unsubscribeCommand.execute(event);
                 break;
+            default:
+                helpCommand.execute(event);
         }
     }
 }
