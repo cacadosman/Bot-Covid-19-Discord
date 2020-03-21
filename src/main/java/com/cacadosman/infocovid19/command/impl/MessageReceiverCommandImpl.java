@@ -3,11 +3,15 @@ package com.cacadosman.infocovid19.command.impl;
 import com.cacadosman.infocovid19.command.*;
 import com.cacadosman.infocovid19.helper.MessageHelper;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MessageReceiverCommandImpl implements MessageReceiverCommand {
+
+    Logger logger = LoggerFactory.getLogger(MessageReceiverCommandImpl.class);
 
     @Autowired
     InfoCommand infoCommand;
@@ -17,12 +21,15 @@ public class MessageReceiverCommandImpl implements MessageReceiverCommand {
     UnsubscribeCommand unsubscribeCommand;
     @Autowired
     HelpCommand helpCommand;
+    @Autowired
+    ProvinsiCommand provinsiCommand;
 
     @Override
     public void execute(MessageReceivedEvent event) {
         String message = event.getMessage().getContentRaw();
         if (MessageHelper.isCommand(message)) {
             String command = MessageHelper.getParam(message, 1);
+            logger.info("execute: " + command);
             passCommand(command, event);
         }
     }
@@ -37,6 +44,9 @@ public class MessageReceiverCommandImpl implements MessageReceiverCommand {
                 break;
             case "unsubscribe":
                 unsubscribeCommand.execute(event);
+                break;
+            case "provinsi":
+                provinsiCommand.execute(event);
                 break;
             default:
                 helpCommand.execute(event);
