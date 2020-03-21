@@ -14,7 +14,9 @@ public class HelpCommandImpl implements HelpCommand {
         messages += "- /covid subscribe (untuk melakukan subscription agar mendapat " +
                     "push notification pada channel discord saat ada perubahan data)\n";
         messages += "- /covid unsubscribe (untuk membatalkan subscription)\n";
-        messages += "- /covid help (untuk melihat daftar perintah)";
+        messages += "- /covid help (untuk melihat daftar perintah)\n";
+        messages += "- /covid provinsi (untuk mengetahui statistik semua provinsi)\n";
+        messages += "- /covid provinsi <nama provinsi> (Untuk mengetahui statistik di provinsi tertentu)";
 
         event.getChannel().sendMessage(messages).queue();
     }

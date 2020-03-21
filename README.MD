@@ -14,6 +14,8 @@ Penggunaan:
 - /covid info \<negara\> (untuk mengetahui statistik di negara tertentu)
 - /covid subscribe (untuk melakukan subscription agar mendapat push notification pada channel discord saat ada perubahan data)
 - /covid unsubscribe (untuk membatalkan subscription)
+- /covid provinsi (untuk mengetahui statistik semua provinsi)
+- /covid provinsi \<nama provinsi\> (Untuk mengetahui statistik di provinsi tertentu)
 
 Contoh:
 - /covid info indonesia
