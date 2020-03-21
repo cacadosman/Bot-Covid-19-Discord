@@ -6,7 +6,7 @@ public class MessageHelper {
 
     public static boolean isCommand(String message) {
         String[] messages = message.split(" ");
-        if (messages.length > 2) {
+        if (messages.length > 1) {
             if(messages[0].equals("/covid")) {
                 return true;
             }

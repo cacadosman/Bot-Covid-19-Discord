@@ -1,6 +1,7 @@
 package com.cacadosman.infocovid19.service;
 
 import com.cacadosman.infocovid19.model.service.CovidAll;
+import com.cacadosman.infocovid19.model.service.CovidIndonesia;
 import com.cacadosman.infocovid19.model.service.CovidSimple;
 import feign.Headers;
 import feign.RequestLine;
@@ -27,4 +28,7 @@ public interface CovidService {
 
     @RequestMapping(method = RequestMethod.GET, value = "/meninggal")
     CovidSimple getDeath();
+
+    @RequestMapping(method = RequestMethod.GET, value = "/indonesia")
+    List<CovidIndonesia> getIndonesia();
 }

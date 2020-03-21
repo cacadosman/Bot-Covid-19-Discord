@@ -1,5 +1,6 @@
 package com.cacadosman.infocovid19.event;
 
+import com.cacadosman.infocovid19.model.discord.DiscordBot;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +22,6 @@ public class MainEventListener {
 
     @EventListener
     public void handleEvent(ContextRefreshedEvent event) throws LoginException {
-        JDABuilder jdaBuilder = new JDABuilder();
-        jdaBuilder.setToken(token);
-        jdaBuilder.addEventListeners(discordEventListener);
-
-        JDA jda = jdaBuilder.build();
+        DiscordBot.createInstance(token, discordEventListener);
     }
 }

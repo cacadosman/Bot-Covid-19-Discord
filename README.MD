@@ -1,7 +1,7 @@
 ## Bot-Covid-19-Discord
 Bot discord untuk mengetahui informasi statistik dari kasus Covid-19.
 
-[![GitHub version](https://img.shields.io/badge/version-1.0.1-yellow.svg)](https://github.com/cacadosman/Bot-Covid-19-Discord/)
+[![GitHub version](https://img.shields.io/badge/version-1.1.0-yellow.svg)](https://github.com/cacadosman/Bot-Covid-19-Discord/)
 [![GitHub issues](https://img.shields.io/github/issues/cacadosman/bot-covid-19-discord)](https://github.com/cacadosman/Bot-Covid-19-Discord/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-red.svg)](https://github.com/cacadosman/Bot-Covid-19-Discord/blob/master/LICENSE)
 
@@ -10,8 +10,10 @@ Bot discord untuk mengetahui informasi statistik dari kasus Covid-19.
 Invite link: https://discordapp.com/oauth2/authorize?client_id=690486456094949386&scope=bot
 
 Penggunaan:
-- /covid info global
-- /covid info \<negara\>
+- /covid info global (untuk mengetahui statistik global)
+- /covid info \<negara\> (untuk mengetahui statistik di negara tertentu)
+- /covid subscribe (untuk melakukan subscription agar mendapat push notification pada channel discord saat ada perubahan data)
+- /covid unsubscribe (untuk membatalkan subscription)
 
 Contoh:
 - /covid info indonesia
