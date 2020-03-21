@@ -43,7 +43,10 @@ public class UpdateCovidCaseCommandImpl implements UpdateCovidCaseCommand {
             notifyCovidCaseCommand.execute(data);
             logger.info("execute: notify guild");
         } else {
-            if (!covidCase.getLastUpdate().equals(data.getLastUpdate())) {
+            if (covidCase.getPositive() != data.getPositive()) {
+                covidCase.setPositive(data.getPositive());
+                covidCase.setRecovered(data.getRecovered());
+                covidCase.setDeath(data.getDeath());
                 covidCase.setLastUpdate(data.getLastUpdate());
                 covidCaseRepository.save(covidCase);
 
