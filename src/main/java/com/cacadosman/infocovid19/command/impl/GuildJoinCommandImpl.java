@@ -15,8 +15,11 @@ public class GuildJoinCommandImpl implements GuildJoinCommand {
         String messages = "Halo, saya adalah Bot Info Covid 19.\n";
         messages += "Saya di sini bertugas untuk memberikan informasi mengenai Covid-19.\n";
         messages += "Teman-teman dapat menginputkan perintah berikut:\n";
-        messages += "- /covid info global\n";
-        messages += "- /covid info <negara>\n";
+        messages += "- /covid info global (untuk mengetahui statistik global)\n";
+        messages += "- /covid info <negara> (untuk mengetahui statistik di negara tertentu)\n";
+        messages += "/covid subscribe (untuk melakukan subscription agar mendapat " +
+                    "push notification pada channel discord saat ada perubahan data)\n";
+        messages += "/covid unsubscribe (untuk membatalkan subscription)\n";
         messages += "Contoh: /covid info indonesia\n\n";
         messages += "Kontak:\n";
         messages += "- FB: cacadosman23\n";
