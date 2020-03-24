@@ -23,6 +23,8 @@ public class MessageReceiverCommandImpl implements MessageReceiverCommand {
     HelpCommand helpCommand;
     @Autowired
     ProvinsiCommand provinsiCommand;
+    @Autowired
+    PreventionCommand preventionCommand;
 
     @Override
     public void execute(MessageReceivedEvent event) {
@@ -47,6 +49,9 @@ public class MessageReceiverCommandImpl implements MessageReceiverCommand {
                 break;
             case "provinsi":
                 provinsiCommand.execute(event);
+                break;
+            case "pencegahan":
+                preventionCommand.execute(event);
                 break;
             default:
                 helpCommand.execute(event);
