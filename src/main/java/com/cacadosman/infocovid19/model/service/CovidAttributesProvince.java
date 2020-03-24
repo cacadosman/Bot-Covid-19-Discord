@@ -5,12 +5,12 @@ import lombok.Data;
 
 @Data
 @Builder
-public class CovidAttributes {
+public class CovidAttributesProvince {
 
-    private int OBJECTID;
-    private String Country_Region;
-    private long Confirmed;
-    private long Deaths;
-    private long Recovered;
-    private long Active;
+    private int FID;
+    private int Kode_Provi;
+    private String Provinsi;
+    private long Kasus_Posi;
+    private long Kasus_Semb;
+    private long Kasus_Meni;
 }

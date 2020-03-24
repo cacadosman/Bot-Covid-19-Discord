@@ -6,9 +6,12 @@ import com.cacadosman.infocovid19.model.command.CovidCountryResult;
 import com.cacadosman.infocovid19.model.service.CovidAll;
 import com.cacadosman.infocovid19.model.service.CovidSimple;
 import com.cacadosman.infocovid19.service.feign.CovidService;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.awt.*;
 import java.util.List;
 
 @Service
@@ -38,12 +41,14 @@ public class InfoCommandImpl implements InfoCommand {
         CovidSimple recoveredData = covidService.getRecovered();
         CovidSimple deathData = covidService.getDeath();
 
-        String messages = "Data Covid-19 Global:\n";
-        messages += "- Total Positif: " + positiveData.getValue() + "\n";
-        messages += "- Total Sembuh: " + recoveredData.getValue() + "\n";
-        messages += "- Total Meninggal: " + deathData.getValue();
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setColor(Color.GREEN);
+        eb.setTitle("Data Covid-19 Global");
+        eb.addField(":cry: Positif", positiveData.getValue(), true);
+        eb.addField(":innocent: Sembuh", recoveredData.getValue(), true);
+        eb.addField(":sob: Meninggal", deathData.getValue(), true);
 
-        event.getChannel().sendMessage(messages).queue();
+        event.getChannel().sendMessage(eb.build()).queue();
     }
 
     private CovidCountryResult getCountryData(MessageReceivedEvent event) {
@@ -73,13 +78,14 @@ public class InfoCommandImpl implements InfoCommand {
             String messages = "Nama negara tidak ditemukan.";
             event.getChannel().sendMessage(messages).queue();
         } else {
-            String messages = "Data Covid-19 di " + country + ":\n";
-            messages += "- Total Terkonfirmasi: " + result.getConfirmed() + "\n";
-            messages += "- Total Kasus Aktif: " + result.getActive() + "\n";
-            messages += "- Total Sembuh: " + result.getRecovered() + "\n";
-            messages += "- Total Meninggal: " + result.getDeaths();
+            EmbedBuilder eb = new EmbedBuilder();
+            eb.setColor(Color.GREEN);
+            eb.setTitle("Data Covid-19 di " + country);
+            eb.addField(":cry: Positif", String.valueOf(result.getConfirmed()), true);
+            eb.addField(":innocent: Sembuh", String.valueOf(result.getRecovered()), true);
+            eb.addField(":sob: Meninggal", String.valueOf(result.getDeaths()), true);
 
-            event.getChannel().sendMessage(messages).queue();
+            event.getChannel().sendMessage(eb.build()).queue();
         }
     }
 }
