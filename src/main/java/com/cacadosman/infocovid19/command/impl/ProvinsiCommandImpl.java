@@ -100,11 +100,12 @@ public class ProvinsiCommandImpl implements ProvinsiCommand {
 
         String descriptions = "";
         for(CovidProvinceResult data: dataList) {
-            descriptions += "***" + data.getProvince() + "***\n";
-            descriptions += ":cry: Positif **" + data.getPositive() + "**\n";
-            descriptions += ":innocent: Sembuh **" + data.getRecovered() + "**\n";
-            descriptions += ":sob: Meninggal **" + data.getDeath() + "**\n\n";
+            descriptions += data.getProvince() + "\n";
+            descriptions += ":cry: Positif " + data.getPositive() + "\n";
+            descriptions += ":innocent: Sembuh " + data.getRecovered() + "\n";
+            descriptions += ":sob: Meninggal " + data.getDeath() + "\n\n";
         }
+        System.out.println(descriptions.length());
         eb.setDescription(descriptions);
 
         event.getChannel().sendMessage(eb.build()).queue();
