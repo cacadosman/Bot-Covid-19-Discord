@@ -3,6 +3,9 @@ package com.cacadosman.infocovid19.command.impl;
 import com.cacadosman.infocovid19.command.ProvinsiCommand;
 import com.cacadosman.infocovid19.helper.MessageHelper;
 import com.cacadosman.infocovid19.model.command.CovidProvinceResult;
+import com.cacadosman.infocovid19.model.service.CovidAllProvince;
+import com.cacadosman.infocovid19.service.feign.CovidService;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -10,20 +13,26 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProvinsiCommandImpl implements ProvinsiCommand {
+
+    @Autowired
+    CovidService covidService;
 
     Logger logger = LoggerFactory.getLogger(ProvinsiCommandImpl.class);
 
     @Override
     public void execute(MessageReceivedEvent event) {
-        List<CovidProvinceResult> covidProvinceResultList = parseData();
+        List<CovidProvinceResult> covidProvinceResultList = parseDataFromApi();
 
         String message = event.getMessage().getContentRaw();
         if (MessageHelper.getParamCount(message) > 2) {
@@ -40,6 +49,7 @@ public class ProvinsiCommandImpl implements ProvinsiCommand {
         }
     }
 
+    @Deprecated
     private List<CovidProvinceResult> parseData() {
         List<CovidProvinceResult> results = new ArrayList<>();
         try {
@@ -64,28 +74,52 @@ public class ProvinsiCommandImpl implements ProvinsiCommand {
         return results;
     }
 
+    private List<CovidProvinceResult> parseDataFromApi() {
+        return covidService.getProvinces().stream()
+                .map(this::mapCovidApiToCovidProviceResult)
+                .collect(Collectors.toList());
+    }
+
+    private CovidProvinceResult mapCovidApiToCovidProviceResult(CovidAllProvince data) {
+        CovidProvinceResult result = CovidProvinceResult
+                .builder()
+                .province(data.getAttributes().getProvinsi())
+                .positive(data.getAttributes().getKasus_Posi())
+                .recovered(data.getAttributes().getKasus_Semb())
+                .death(data.getAttributes().getKasus_Meni())
+                .build();
+        return result;
+    }
+
     private void sendAllProvicesDataMessage(
             MessageReceivedEvent event,
             List<CovidProvinceResult> dataList) {
-        String messages = "[Data statistik semua provinsi]\n";
-        for(CovidProvinceResult data: dataList) {
-            messages += data.getProvince() + ":\n";
-            messages += "- Positif: " + data.getPositive() + "\n";
-            messages += "- Sembuh: " + data.getRecovered() + "\n";
-            messages += "- Meninggal: " + data.getDeath() + "\n\n";
-        }
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setColor(Color.CYAN);
+        eb.setTitle("Data statistik semua provinsi");
 
-        event.getChannel().sendMessage(messages).queue();
+        String descriptions = "";
+        for(CovidProvinceResult data: dataList) {
+            descriptions += "***" + data.getProvince() + "***\n";
+            descriptions += ":cry: Positif **" + data.getPositive() + "**\n";
+            descriptions += ":innocent: Sembuh **" + data.getRecovered() + "**\n";
+            descriptions += ":sob: Meninggal **" + data.getDeath() + "**\n\n";
+        }
+        eb.setDescription(descriptions);
+
+        event.getChannel().sendMessage(eb.build()).queue();
     }
 
     private void sendProvinceDataMessage(
             MessageReceivedEvent event, CovidProvinceResult data) {
-        String messages = "Data statistik di provinsi " + data.getProvince() + ":\n";
-        messages += "- Positif: " + data.getPositive() + "\n";
-        messages += "- Sembuh: " + data.getRecovered() + "\n";
-        messages += "- Meninggal: " + data.getDeath() + "\n";
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setColor(Color.CYAN);
+        eb.setTitle("Data statistik di Provinsi " + data.getProvince());
+        eb.addField(":cry: Positif", String.valueOf(data.getPositive()), true);
+        eb.addField(":innocent: Sembuh", String.valueOf(data.getRecovered()), true);
+        eb.addField(":sob: Meninggal", String.valueOf(data.getDeath()), true);
 
-        event.getChannel().sendMessage(messages).queue();
+        event.getChannel().sendMessage(eb.build()).queue();
     }
 
     private void sendProvinceNotFoundMessage(MessageReceivedEvent event) {

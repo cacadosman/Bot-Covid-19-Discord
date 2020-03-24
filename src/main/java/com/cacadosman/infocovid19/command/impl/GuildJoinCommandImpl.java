@@ -1,8 +1,11 @@
 package com.cacadosman.infocovid19.command.impl;
 
 import com.cacadosman.infocovid19.command.GuildJoinCommand;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.events.guild.GuildJoinEvent;
 import org.springframework.stereotype.Service;
+
+import java.awt.*;
 
 @Service
 public class GuildJoinCommandImpl implements GuildJoinCommand {
@@ -12,24 +15,26 @@ public class GuildJoinCommandImpl implements GuildJoinCommand {
     }
 
     private void sendHelpMessage(GuildJoinEvent event) {
-        String messages = "Halo, saya adalah Bot Info Covid 19.\n";
-        messages += "Saya di sini bertugas untuk memberikan informasi mengenai Covid-19.\n";
-        messages += "Teman-teman dapat menginputkan perintah berikut:\n";
-        messages += "- /covid info global (untuk mengetahui statistik global)\n";
-        messages += "- /covid info <negara> (untuk mengetahui statistik di negara tertentu)\n";
-        messages += "- /covid subscribe (untuk melakukan subscription agar mendapat " +
-                    "push notification pada channel discord saat ada perubahan data)\n";
-        messages += "- /covid unsubscribe (untuk membatalkan subscription)\n";
-        messages += "- /covid help (untuk melihat daftar perintah)\n";
-        messages += "- /covid provinsi (untuk mengetahui statistik semua provinsi)\n";
-        messages += "- /covid provinsi <nama provinsi> (Untuk mengetahui statistik di provinsi tertentu)";
-        messages += "- /covid pencegahan (Informasi mengenai pencegahan Covid-19)\n";
-        messages += "Contoh: /covid info indonesia\n\n";
-        messages += "Kontak:\n";
-        messages += "- FB: cacadosman23\n";
-        messages += "- Discord: cacadosman#3356\n\n";
-        messages += "Terima kasih.";
+        EmbedBuilder eb = new EmbedBuilder();
+        eb.setColor(Color.CYAN);
+        eb.setTitle("Bot Info Covid-19");
+        eb.setDescription("Halo, saya adalah Bot Info Covid 19.\n" +
+                "Saya di sini bertugas untuk memberikan informasi mengenai Covid-19.\n" +
+                "Teman-teman dapat menginputkan perintah berikut:\n");
+        eb.addField("/covid info global", "Untuk mengetahui statistik global", false);
+        eb.addField("/covid info <negara>", "Untuk mengetahui statistik global", false);
+        eb.addField("/covid subscribe", "Untuk melakukan subscription agar mendapat " +
+                "push notification pada channel discord saat ada perubahan data", false);
+        eb.addField("/covid unsubscribe", "Untuk membatalkan subscription", false);
+        eb.addField("/covid help", "untuk melihat daftar perintah", false);
+        eb.addField("/covid provinsi", "Untuk mengetahui statistik semua provinsi", false);
+        eb.addField("/covid provinsi <nama provinsi>",
+                "Untuk mengetahui statistik di provinsi tertentu", false);
+        eb.addField("/covid pencegahan", "Informasi mengenai pencegahan Covid-19", false);
+        eb.addBlankField(false);
+        eb.addField("Kontak:", "- FB: cacadosman23\n" + "- Discord: cacadosman#3356\n\n" +
+                ":heart: Terima Kasih.", false);
 
-        event.getGuild().getDefaultChannel().sendMessage(messages).queue();
+        event.getGuild().getDefaultChannel().sendMessage(eb.build()).queue();
     }
 }
