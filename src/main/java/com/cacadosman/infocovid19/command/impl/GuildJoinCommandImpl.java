@@ -23,6 +23,7 @@ public class GuildJoinCommandImpl implements GuildJoinCommand {
         messages += "- /covid help (untuk melihat daftar perintah)\n";
         messages += "- /covid provinsi (untuk mengetahui statistik semua provinsi)\n";
         messages += "- /covid provinsi <nama provinsi> (Untuk mengetahui statistik di provinsi tertentu)";
+        messages += "- /covid pencegahan (Informasi mengenai pencegahan Covid-19)\n";
         messages += "Contoh: /covid info indonesia\n\n";
         messages += "Kontak:\n";
         messages += "- FB: cacadosman23\n";

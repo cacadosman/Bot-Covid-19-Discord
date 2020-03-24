@@ -16,7 +16,8 @@ public class HelpCommandImpl implements HelpCommand {
         messages += "- /covid unsubscribe (untuk membatalkan subscription)\n";
         messages += "- /covid help (untuk melihat daftar perintah)\n";
         messages += "- /covid provinsi (untuk mengetahui statistik semua provinsi)\n";
-        messages += "- /covid provinsi <nama provinsi> (Untuk mengetahui statistik di provinsi tertentu)";
+        messages += "- /covid provinsi <nama provinsi> (Untuk mengetahui statistik di provinsi tertentu)\n";
+        messages += "- /covid pencegahan (Informasi mengenai pencegahan Covid-19)";
 
         event.getChannel().sendMessage(messages).queue();
     }
