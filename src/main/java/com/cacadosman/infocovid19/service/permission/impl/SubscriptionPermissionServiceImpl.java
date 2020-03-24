@@ -1,6 +1,6 @@
-package com.cacadosman.infocovid19.model.service.permission.impl;
+package com.cacadosman.infocovid19.service.permission.impl;
 
-import com.cacadosman.infocovid19.model.service.permission.PermissionService;
+import com.cacadosman.infocovid19.service.permission.PermissionService;
 import net.dv8tion.jda.api.Permission;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.stereotype.Service;

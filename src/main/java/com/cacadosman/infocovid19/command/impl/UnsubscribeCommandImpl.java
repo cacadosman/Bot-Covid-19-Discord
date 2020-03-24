@@ -2,7 +2,7 @@ package com.cacadosman.infocovid19.command.impl;
 
 import com.cacadosman.infocovid19.command.UnsubscribeCommand;
 import com.cacadosman.infocovid19.entity.Subscriber;
-import com.cacadosman.infocovid19.model.service.permission.PermissionService;
+import com.cacadosman.infocovid19.service.permission.PermissionService;
 import com.cacadosman.infocovid19.repository.SubscriberRepository;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
