@@ -6,7 +6,7 @@ import com.cacadosman.infocovid19.entity.CovidCase;
 import com.cacadosman.infocovid19.model.event.CovidCaseData;
 import com.cacadosman.infocovid19.model.service.CovidIndonesia;
 import com.cacadosman.infocovid19.repository.CovidCaseRepository;
-import com.cacadosman.infocovid19.service.CovidService;
+import com.cacadosman.infocovid19.service.feign.CovidService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;

@@ -1,4 +1,4 @@
-package com.cacadosman.infocovid19.service;
+package com.cacadosman.infocovid19.service.feign;
 
 import com.cacadosman.infocovid19.model.service.CovidAll;
 import com.cacadosman.infocovid19.model.service.CovidIndonesia;

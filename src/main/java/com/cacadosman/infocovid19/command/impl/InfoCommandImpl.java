@@ -5,7 +5,7 @@ import com.cacadosman.infocovid19.helper.MessageHelper;
 import com.cacadosman.infocovid19.model.command.CovidCountryResult;
 import com.cacadosman.infocovid19.model.service.CovidAll;
 import com.cacadosman.infocovid19.model.service.CovidSimple;
-import com.cacadosman.infocovid19.service.CovidService;
+import com.cacadosman.infocovid19.service.feign.CovidService;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

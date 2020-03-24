@@ -1,6 +1,5 @@
-package com.cacadosman.infocovid19.model.service.permission;
+package com.cacadosman.infocovid19.service.permission;
 
-import net.dv8tion.jda.api.events.Event;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public interface PermissionService {
