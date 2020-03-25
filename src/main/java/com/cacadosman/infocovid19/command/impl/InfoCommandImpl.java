@@ -57,7 +57,7 @@ public class InfoCommandImpl implements InfoCommand {
         for(CovidAll item : data) {
             String itemCountry = item.getAttributes().getCountry_Region().toLowerCase();
 
-            if (itemCountry.equals(country)) {
+            if (itemCountry.contains(country)) {
                 CovidCountryResult result = CovidCountryResult
                         .builder()
                         .active(item.getAttributes().getActive())
