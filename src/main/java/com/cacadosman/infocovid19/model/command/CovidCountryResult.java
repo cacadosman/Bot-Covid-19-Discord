@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CovidCountryResult {
+    private String country;
     private long confirmed;
     private long active;
     private long recovered;
