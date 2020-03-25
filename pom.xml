@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.cacadosman</groupId>
     <artifactId>info-covid-19</artifactId>
-    <version>1.5.3</version>
+    <version>1.5.4</version>
     <name>info-covid-19</name>
     <description>Informasi mengenai Covid-19 di Discord</description>
 
