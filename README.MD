@@ -7,7 +7,7 @@ Bot discord untuk mengetahui informasi statistik dari kasus Covid-19.
 
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://Github.com/cacadosman/)
 
-Invite link: https://discordapp.com/oauth2/authorize?client_id=690486456094949386&scope=bot
+Invite link: https://discordapp.com/oauth2/authorize?client_id=690486456094949386&scope=bot&permissions=314368
 
 Penggunaan:
 - /covid info global (untuk mengetahui statistik global)
