@@ -60,6 +60,7 @@ public class InfoCommandImpl implements InfoCommand {
             if (itemCountry.contains(country)) {
                 CovidCountryResult result = CovidCountryResult
                         .builder()
+                        .country(item.getAttributes().getCountry_Region())
                         .active(item.getAttributes().getActive())
                         .confirmed(item.getAttributes().getConfirmed())
                         .recovered(item.getAttributes().getRecovered())
@@ -72,7 +73,6 @@ public class InfoCommandImpl implements InfoCommand {
     }
 
     private void sendCountryData(MessageReceivedEvent event) {
-        String country = MessageHelper.sliceParamUntilEnd(event.getMessage().getContentRaw(), 2);
         CovidCountryResult result = getCountryData(event);
         if (result == null) {
             String messages = "Nama negara tidak ditemukan.";
@@ -80,7 +80,7 @@ public class InfoCommandImpl implements InfoCommand {
         } else {
             EmbedBuilder eb = new EmbedBuilder();
             eb.setColor(Color.GREEN);
-            eb.setTitle("Data Covid-19 di " + country);
+            eb.setTitle("Data Covid-19 di " + result.getCountry());
             eb.addField(":cry: Positif", String.valueOf(result.getConfirmed()), true);
             eb.addField(":innocent: Sembuh", String.valueOf(result.getRecovered()), true);
             eb.addField(":sob: Meninggal", String.valueOf(result.getDeaths()), true);
