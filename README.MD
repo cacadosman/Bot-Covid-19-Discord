@@ -1,13 +1,13 @@
 ## Bot-Covid-19-Discord
 Bot discord untuk mengetahui informasi statistik dari kasus Covid-19.
 
-[![GitHub version](https://img.shields.io/badge/version-1.5.1-yellow.svg)](https://github.com/cacadosman/Bot-Covid-19-Discord/)
+[![GitHub version](https://img.shields.io/badge/version-1.5.2-yellow.svg)](https://github.com/cacadosman/Bot-Covid-19-Discord/)
 [![GitHub issues](https://img.shields.io/github/issues/cacadosman/bot-covid-19-discord)](https://github.com/cacadosman/Bot-Covid-19-Discord/issues)
 [![GitHub license](https://img.shields.io/badge/license-MIT-red.svg)](https://github.com/cacadosman/Bot-Covid-19-Discord/blob/master/LICENSE)
 
 [![ForTheBadge built-with-love](http://ForTheBadge.com/images/badges/built-with-love.svg)](https://Github.com/cacadosman/)
 
-Invite link: https://discordapp.com/oauth2/authorize?client_id=690486456094949386&scope=bot
+Invite link: https://discordapp.com/oauth2/authorize?client_id=690486456094949386&scope=bot&permissions=314368
 
 Penggunaan:
 - /covid info global (untuk mengetahui statistik global)
