@@ -37,16 +37,31 @@ public class ProvinsiCommandImpl implements ProvinsiCommand {
         String message = event.getMessage().getContentRaw();
         if (MessageHelper.getParamCount(message) > 2) {
             String query = MessageHelper.sliceParamUntilEnd(message, 2).toLowerCase();
-            for(CovidProvinceResult data: covidProvinceResultList) {
-                if (data.getProvince().toLowerCase().contains(query)) {
-                    sendProvinceDataMessage(event, data);
-                    return;
-                }
+            CovidProvinceResult result = findProvince(query, covidProvinceResultList);
+            if (result == null) {
+                sendProvinceNotFoundMessage(event);
+            } else {
+                sendProvinceDataMessage(event, result);
             }
-            sendProvinceNotFoundMessage(event);
         } else {
             sendAllProvicesDataMessage(event, covidProvinceResultList);
         }
+    }
+
+    private CovidProvinceResult findProvince(
+            String query,
+            List<CovidProvinceResult> data) {
+        CovidProvinceResult result = null;
+        for (CovidProvinceResult item: data) {
+            String province = item.getProvince().toLowerCase();
+            if (province.equals(query)) {
+                return item;
+            }
+            if (result == null && province.contains(query)) {
+                result = item;
+            }
+        }
+        return result;
     }
 
     @Deprecated
