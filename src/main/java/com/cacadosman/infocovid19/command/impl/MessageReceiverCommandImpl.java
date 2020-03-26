@@ -25,6 +25,8 @@ public class MessageReceiverCommandImpl implements MessageReceiverCommand {
     ProvinsiCommand provinsiCommand;
     @Autowired
     PreventionCommand preventionCommand;
+    @Autowired
+    PredictionCommand predictionCommand;
 
     @Override
     public void execute(MessageReceivedEvent event) {
@@ -52,6 +54,9 @@ public class MessageReceiverCommandImpl implements MessageReceiverCommand {
                 break;
             case "pencegahan":
                 preventionCommand.execute(event);
+                break;
+            case "prediksi":
+                predictionCommand.execute(event);
                 break;
             default:
                 helpCommand.execute(event);

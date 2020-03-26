@@ -31,6 +31,7 @@ public class GuildJoinCommandImpl implements GuildJoinCommand {
         eb.addField("/covid provinsi <nama provinsi>",
                 "Untuk mengetahui statistik di provinsi tertentu", false);
         eb.addField("/covid pencegahan", "Informasi mengenai pencegahan Covid-19", false);
+        eb.addField("/covid prediksi", "Prediksi total kasus Covid-19 di Indonesia lima hari kedepan", false);
         eb.addBlankField(false);
         eb.addField("Kontak:", "- FB: cacadosman23\n" + "- Discord: cacadosman#3356\n\n" +
                 ":heart: Terima Kasih.", false);
