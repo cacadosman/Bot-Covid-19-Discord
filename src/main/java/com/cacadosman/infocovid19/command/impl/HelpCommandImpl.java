@@ -25,6 +25,7 @@ public class HelpCommandImpl implements HelpCommand {
         eb.addField("/covid provinsi <nama provinsi>",
                 "Untuk mengetahui statistik di provinsi tertentu", false);
         eb.addField("/covid pencegahan", "Informasi mengenai pencegahan Covid-19", false);
+        eb.addField("/covid prediksi", "Prediksi total kasus Covid-19 di Indonesia lima hari kedepan", false);
         eb.addBlankField(false);
         eb.addField(":heart: Made by love",
                 "#DiamDirumahCuk\n" + "#SocialDistancing\n" + "#StaySafeIndonesia",
