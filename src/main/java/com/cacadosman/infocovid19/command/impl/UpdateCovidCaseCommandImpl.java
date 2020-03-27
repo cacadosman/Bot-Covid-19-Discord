@@ -66,10 +66,14 @@ public class UpdateCovidCaseCommandImpl implements UpdateCovidCaseCommand {
         CovidCaseData covidCaseData = new CovidCaseData();
         covidIndonesiaList.forEach(data -> {
             if (data.getLastupdate() == null) {
+                long positive = Long.parseLong(data.getPositif().replace(",", ""));
+                long recovered = Long.parseLong(data.getSembuh().replace(",", ""));
+                long death = Long.parseLong(data.getMeninggal().replace(",", ""));
+
                 covidCaseData.setCountry(data.getName().toLowerCase());
-                covidCaseData.setPositive(data.getPositif());
-                covidCaseData.setRecovered(data.getSembuh());
-                covidCaseData.setDeath(data.getMeninggal());
+                covidCaseData.setPositive(positive);
+                covidCaseData.setRecovered(recovered);
+                covidCaseData.setDeath(death);
             } else {
                 covidCaseData.setLastUpdate(data.getLastupdate());
             }
