@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CovidIndonesia {
     private String name;
-    private long positif;
-    private long sembuh;
-    private long meninggal;
+    private String positif;
+    private String sembuh;
+    private String meninggal;
     private String lastupdate;
 }
